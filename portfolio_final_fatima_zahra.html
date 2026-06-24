@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fatima-Zahra Bekraoui — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  [data-theme="light"] {
+    --bg: #F7F5F0;
+    --bg2: #ffffff;
+    --ink: #111110;
+    --muted: #6B6B66;
+    --line: #E2DED6;
+    --accent: #C8501A;
+    --accent-light: #F5E9E3;
+    --tag-bg: #EDEAE4;
+    --tag-ink: #444441;
+    --nav-bg: rgba(247,245,240,0.95);
+    --contact-bg: #111110;
+    --contact-text: #ffffff;
+    --contact-sub: #8B8B85;
+    --contact-link: #D0CFC8;
+    --contact-icon-bg: #222220;
+  }
+
+  [data-theme="dark"] {
+    --bg: #0D1117;
+    --bg2: #161B22;
+    --ink: #E6EDF3;
+    --muted: #8B949E;
+    --line: #30363D;
+    --accent: #58A6FF;
+    --accent-light: rgba(88,166,255,0.1);
+    --tag-bg: #1C2128;
+    --tag-ink: #C9D1D9;
+    --nav-bg: rgba(13,17,23,0.95);
+    --contact-bg: #161B22;
+    --contact-text: #E6EDF3;
+    --contact-sub: #8B949E;
+    --contact-link: #8B949E;
+    --contact-icon-bg: #0D1117;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2.5rem;
+    border-bottom: 1px solid var(--line);
+    background: var(--nav-bg);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .nav-logo { font-weight: 700; font-size: 15px; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-right { display: flex; align-items: center; gap: 14px; }
+
+  .theme-toggle {
+    width: 40px; height: 22px;
+    border-radius: 100px;
+    border: 1.5px solid var(--line);
+    background: var(--tag-bg);
+    cursor: pointer;
+    position: relative;
+    transition: background 0.3s, border-color 0.3s;
+    flex-shrink: 0;
+  }
+  .theme-toggle::after {
+    content: '';
+    position: absolute;
+    top: 3px; left: 3px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    transition: transform 0.3s;
+  }
+  [data-theme="dark"] .theme-toggle::after { transform: translateX(18px); }
+
+  .nav-gh {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500;
+    color: var(--muted); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-gh:hover { color: var(--ink); }
+  .nav-cv {
+    font-size: 13px; font-weight: 600;
+    padding: 8px 16px;
+    border: 1px solid var(--accent);
+    border-radius: 100px;
+    background: transparent;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-cv:hover { background: var(--accent); color: var(--bg); }
+  .nav-cta {
+    font-size: 13px; font-weight: 500;
+    padding: 8px 18px;
+    border: 1px solid var(--ink);
+    border-radius: 100px;
+    background: transparent;
+    color: var(--ink);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-cta:hover { background: var(--ink); color: var(--bg); }
+
+  /* HERO */
+  .hero {
+    padding: 6rem 2.5rem 5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: end;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-light);
+    border-radius: 100px; padding: 4px 12px; margin-bottom: 1.5rem;
+  }
+  .badge-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+    animation: blink 2s ease-in-out infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 700;
+    line-height: 1.05; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 1.25rem;
+  }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero-sub { font-size: 16px; color: var(--muted); max-width: 480px; line-height: 1.75; margin-bottom: 2.5rem; }
+  .scroll-hint { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+  .scroll-hint::before { content: ''; display: block; width: 24px; height: 1px; background: var(--muted); }
+  .hero-meta { text-align: right; }
+  .hero-meta p { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .hero-meta span { font-size: 32px; font-weight: 700; color: var(--ink); display: block; line-height: 1; letter-spacing: -0.03em; }
+
+  /* LAYOUT */
+  .divider { border: none; border-top: 1px solid var(--line); margin: 0 2.5rem; transition: border-color 0.3s; }
+  .section { max-width: 900px; margin: 0 auto; padding: 5rem 2.5rem; }
+  .section-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 3.5rem; }
+  .section-num { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; }
+  .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
+
+  /* SKILLS */
+  .skills-wrap {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .skill-block {
+    padding: 2rem;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--bg2);
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .skill-block:nth-child(2n) { border-right: none; }
+  .skill-block:nth-child(5), .skill-block:nth-child(6) { border-bottom: none; }
+  .skill-num { font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+  .skill-name { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 0.5rem; }
+  .skill-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2.5rem; }
+  .tag { font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 100px; background: var(--tag-bg); color: var(--tag-ink); transition: background 0.3s, color 0.3s; }
+
+  /* EXPERIENCE */
+  .exp-item {
+    display: grid; grid-template-columns: 160px 1fr; gap: 2rem;
+    padding: 2.5rem 0; border-bottom: 1px solid var(--line); transition: border-color 0.3s;
+  }
+  .exp-item:first-child { border-top: 1px solid var(--line); }
+  .exp-period { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+  .exp-org { font-size: 12px; font-weight: 700; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; }
+  .exp-role { font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 1rem; line-height: 1.25; letter-spacing: -0.01em; }
+  .exp-desc { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .exp-tag { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 100px; background: var(--tag-bg); color: var(--tag-ink); transition: background 0.3s, color 0.3s; }
+
+  /* PROJECTS */
+  .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .proj-card {
+    background: var(--bg2); border: 1px solid var(--line); border-radius: 16px; padding: 2rem;
+    transition: border-color 0.2s, transform 0.2s, background 0.3s;
+  }
+  .proj-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .proj-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+  .proj-name { font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 0.75rem; line-height: 1.2; }
+  .proj-desc { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 1.25rem; }
+  .proj-lang { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 500; color: var(--muted); }
+  .lang-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .proj-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 1.25rem; }
+  .proj-github {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 500; color: var(--accent);
+    text-decoration: none; border: 1px solid var(--accent);
+    border-radius: 100px; padding: 5px 12px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .proj-github:hover { background: var(--accent); color: var(--bg); }
+
+  /* EDUCATION */
+  .edu-item {
+    display: grid; grid-template-columns: 160px 1fr; gap: 2rem;
+    padding: 2rem 0; border-bottom: 1px solid var(--line); transition: border-color 0.3s;
+  }
+  .edu-item:first-child { border-top: 1px solid var(--line); }
+  .edu-year { font-size: 12px; color: var(--muted); padding-top: 3px; line-height: 1.6; }
+  .edu-school { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+  .edu-degree { font-size: 13px; color: var(--accent); font-weight: 500; margin-bottom: 4px; }
+  .edu-courses { font-size: 12px; color: var(--muted); }
+
+  /* CONTACT */
+  .contact-block {
+    background: var(--contact-bg); border: 1px solid var(--line); border-radius: 20px; padding: 3.5rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .contact-block h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--contact-text); margin-bottom: 0.5rem; line-height: 1.15; letter-spacing: -0.02em; }
+  .contact-block p { font-size: 14px; color: var(--contact-sub); }
+  .contact-links { display: flex; flex-direction: column; gap: 10px; }
+  .contact-link { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--contact-link); text-decoration: none; transition: color 0.2s; }
+  .contact-link:hover { color: var(--contact-text); }
+  .contact-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--contact-icon-bg); display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--accent); flex-shrink: 0; transition: background 0.3s; }
+
+  footer { text-align: center; padding: 2rem; font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); transition: border-color 0.3s; }
+
+  @media (max-width: 640px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-meta { text-align: left; }
+    .skills-wrap { grid-template-columns: 1fr; }
+    .skill-block:nth-child(2n) { border-right: 1px solid var(--line); }
+    .skill-block:last-child { border-bottom: none; }
+    .skill-block:nth-child(5) { border-bottom: 1px solid var(--line); }
+    .exp-item, .edu-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .proj-grid { grid-template-columns: 1fr; }
+    .contact-block { flex-direction: column; }
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    .section { padding: 3rem 1.25rem; }
+    .hero { padding: 3rem 1.25rem; }
+  }
+</style>
+</head>
+<body data-theme="light">
+
+<nav>
+  <a class="nav-logo" href="#">FZB</a>
+  <ul class="nav-links">
+    <li><a href="#competences">Compétences</a></li>
+    <li><a href="#experience">Expérience</a></li>
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#formation">Formation</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Basculer thème clair/sombre"></button>
+    <a class="nav-gh" href="https://github.com/Fatima-Zahra7" target="_blank" aria-label="GitHub">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+      GitHub
+    </a>
+    <a class="nav-cv" href="Fatima-Zahra_BEKRAOUI_CV.pdf" download>CV ↓</a>
+    <a class="nav-cta" href="mailto:fzbekraoui@gmail.com">Me contacter</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div>
+    <div class="hero-badge"><span class="badge-dot"></span> Disponible — Août 2025</div>
+    <h1>Bonjour, je suis<br><em>Fatima-Zahra</em></h1>
+    <p class="hero-sub">Ingénieure systèmes, réseaux &amp; cybersécurité, diplômée de l'ESILV. J'ai passé 3 ans à sécuriser des infrastructures critiques au Ministère des Armées — entre hardening, automatisation Ansible et conformité ANSSI.</p>
+    <p class="scroll-hint">Scroll pour découvrir</p>
+  </div>
+  <div class="hero-meta">
+    <p>Années d'expérience</p>
+    <span>3</span>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section" id="competences">
+  <div class="section-header">
+    <span class="section-num">01 — Skills</span>
+    <h2 class="section-title">Ce que je maîtrise</h2>
+  </div>
+  <div class="skills-wrap">
+    <div class="skill-block"><p class="skill-num">01</p><p class="skill-name">Ingénierie Système</p><p class="skill-desc">Linux RedHat/Debian, Windows Server, Active Directory, DNS, GPO — administration avancée d'environnements hybrides.</p></div>
+    <div class="skill-block"><p class="skill-num">02</p><p class="skill-name">Cybersécurité & Durcissement</p><p class="skill-desc">Hardening OS, gestion des certificats, authentification centralisée, remédiation de vulnérabilités.</p></div>
+    <div class="skill-block"><p class="skill-num">03</p><p class="skill-name">Réseaux Sécurisés</p><p class="skill-desc">VPN, routage, segmentation de flux, filtrage — configuration en environnement haute sécurité.</p></div>
+    <div class="skill-block"><p class="skill-num">04</p><p class="skill-name">Automatisation & MCO</p><p class="skill-desc">Ansible, Python, PowerShell, Bash — industrialisation et supervision Zabbix.</p></div>
+    <div class="skill-block"><p class="skill-num">05</p><p class="skill-name">Gouvernance SSI</p><p class="skill-desc">Homologation ANSSI/DIRISI, pilotage conformité, audit sécurité, rédaction DAFT.</p></div>
+    <div class="skill-block"><p class="skill-num">06</p><p class="skill-name">Cryptographie</p><p class="skill-desc">Diffie-Hellman, ElGamal, implémentation d'algorithmes de chiffrement appliqués.</p></div>
+  </div>
+  <div class="tag-cloud">
+    <span class="tag">Python</span><span class="tag">Bash</span><span class="tag">PowerShell</span><span class="tag">Ansible</span><span class="tag">Linux</span><span class="tag">Windows Server</span><span class="tag">Zabbix</span><span class="tag">Kotlin</span><span class="tag">Git</span><span class="tag">Active Directory</span><span class="tag">ANSSI</span>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section" id="experience">
+  <div class="section-header">
+    <span class="section-num">02 — Expérience</span>
+    <h2 class="section-title">Mon parcours</h2>
+  </div>
+  <div>
+    <div class="exp-item">
+      <div><p class="exp-period">Nov. 2022 → Juil. 2025</p><p class="exp-org">Ministère des Armées</p></div>
+      <div>
+        <p class="exp-role">Ingénieure Systèmes, Réseaux &amp; Sécurité</p>
+        <p class="exp-desc">Conception et déploiement d'infrastructures critiques Unix/Windows en environnement haute sécurité. Pilotage de la conformité SSI selon les normes ANSSI/DIRISI. Scripts PowerShell/Bash pour le durcissement automatisé des pare-feux. Rédaction des DAFT et procédures d'exploitation sécurisée.</p>
+        <div class="exp-tags"><span class="exp-tag">Ansible</span><span class="exp-tag">Linux</span><span class="exp-tag">ANSSI</span><span class="exp-tag">Hardening</span><span class="exp-tag">DAFT</span><span class="exp-tag">Saclay</span></div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div><p class="exp-period">Nov. 2021 → Août 2022</p><p class="exp-org">Préfecture de Police</p></div>
+      <div>
+        <p class="exp-role">Technicienne Support Informatique</p>
+        <p class="exp-desc">Administration des accès et gestion du cycle de vie des identités via Active Directory. Support de niveau 2/3 sur des serveurs critiques.</p>
+        <div class="exp-tags"><span class="exp-tag">Active Directory</span><span class="exp-tag">MCO</span><span class="exp-tag">Support N2/N3</span><span class="exp-tag">Paris</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section" id="projets">
+  <div class="section-header">
+    <span class="section-num">03 — Projets</span>
+    <h2 class="section-title">Réalisations</h2>
+  </div>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <p class="proj-label">Cryptographie</p>
+      <p class="proj-name">Diffie-Hellman &amp; ElGamal</p>
+      <p class="proj-desc">Implémentation d'algorithmes de chiffrement avec génération de clés, échange sécurisé et opérations cryptographiques complètes.</p>
+      <div class="proj-footer">
+        <span class="proj-lang"><span class="lang-dot" style="background:#3572A5"></span> Python</span>
+        <a class="proj-github" href="https://github.com/Fatima-Zahra7/Cryptography_Diffie-Hellman_ElGamal" target="_blank">Voir sur GitHub ↗</a>
+      </div>
+    </div>
+    <div class="proj-card">
+      <p class="proj-label">Application Mobile</p>
+      <p class="proj-name">FitQuest</p>
+      <p class="proj-desc">Application Android utilisant l'IA pour générer un programme d'entraînement personnalisé, avec suivi des performances et historique.</p>
+      <div class="proj-footer">
+        <span class="proj-lang"><span class="lang-dot" style="background:#A97BFF"></span> Kotlin</span>
+        <a class="proj-github" href="https://github.com/Fatima-Zahra7/FitQuest" target="_blank">Voir sur GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section" id="formation">
+  <div class="section-header">
+    <span class="section-num">04 — Formation</span>
+    <h2 class="section-title">Études</h2>
+  </div>
+  <div>
+    <div class="edu-item">
+      <div class="edu-year">Sept. 2022 → Août 2025<br>Courbevoie</div>
+      <div>
+        <p class="edu-school">ESILV — École Supérieure d'Ingénieurs Léonard-de-Vinci</p>
+        <p class="edu-degree">Diplôme d'ingénieur · Cloud Computing &amp; Cybersécurité</p>
+        <p class="edu-courses">Infrastructure avancée · Réseau · Cryptographie · Forensic · Machine Learning &amp; Data Science</p>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">Sept. 2024 → Jan. 2025<br>Riga, Lettonie</div>
+      <div>
+        <p class="edu-school">RTU — Technical University of Riga</p>
+        <p class="edu-degree">Semestre international · 6 mois</p>
+        <p class="edu-courses">Cryptography &amp; Data Security · Network Security · Reliability of Information Systems</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="contact-block">
+    <div>
+      <h2>Travaillons<br>ensemble.</h2>
+      <p>Disponible à partir d'août 2025 — Île-de-France</p>
+    </div>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:fzbekraoui@gmail.com"><span class="contact-icon">✉</span> fzbekraoui@gmail.com</a>
+      <a class="contact-link" href="tel:+33627552673"><span class="contact-icon">☏</span> 06 27 55 26 73</a>
+      <span class="contact-link"><span class="contact-icon">⌖</span> Gennevilliers, 92230</span>
+    </div>
+  </div>
+</div>
+
+<footer>Fatima-Zahra Bekraoui · Ingénieure Systèmes &amp; Cybersécurité · 2025</footer>
+
+<script>
+  const toggle = document.getElementById('themeToggle');
+  const body = document.body;
+  const saved = localStorage.getItem('theme') || 'light';
+  body.dataset.theme = saved;
+  toggle.addEventListener('click', () => {
+    const next = body.dataset.theme === 'light' ? 'dark' : 'light';
+    body.dataset.theme = next;
+    localStorage.setItem('theme', next);
+  });
+</script>
+
+</body>
+</html>
