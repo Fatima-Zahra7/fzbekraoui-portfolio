@@ -43,8 +43,8 @@ Aucune installation requise. Clonez et ouvrez directement dans votre navigateur 
 ```bash
 git clone https://github.com/Fatima-Zahra7/fzbekraoui-portfolio.git
 cd fzbekraoui-portfolio
-open portfolio_fatima_zahra.html   # macOS
-# ou double-cliquez sur portfolio_fatima_zahra.html sous Windows
+open index.html   # macOS
+# ou double-cliquez sur index.html sous Windows
 ```
 
 Avec VS Code, installez l'extension **Live Server** et faites clic droit → *Open with Live Server* pour un rechargement automatique.
