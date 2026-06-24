@@ -31,7 +31,7 @@ Site portfolio one-page entièrement fait en HTML/CSS vanilla — sans framework
 
 ```
 fzbekraoui-portfolio/
-├── portfolio_fatima_zahra.html     # Portfolio complet (one-file)
+├── index.html     # Portfolio complet (one-file)
 ├── Fatima-Zahra_BEKRAOUI_CV.pdf    # CV téléchargeable
 └── README.md
 ```
