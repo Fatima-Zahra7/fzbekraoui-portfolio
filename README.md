@@ -2,7 +2,7 @@
 
 Portfolio personnel de **Fatima-Zahra Bekraoui**, ingénieure systèmes, réseaux & cybersécurité.
 
-🔗 **[Voir le portfolio en ligne](https://www.fzbekraoui.fr)**
+🔗 **[Voir le portfolio en ligne](https://www.fzbekraoui.me)**
 
 ---
 
