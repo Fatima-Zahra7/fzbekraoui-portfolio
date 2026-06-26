@@ -4,665 +4,432 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fatima-Zahra Bekraoui — Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:#0a0e1a;color:#e2e8f0;min-height:100vh;overflow-x:hidden}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ══ SWITCHER ══ */
-.switcher{display:flex;align-items:center;justify-content:center;gap:0;padding:1.25rem 0 0.5rem}
-.sw-btn{font-family:'JetBrains Mono',monospace;font-size:11px;padding:7px 20px;border:1px solid rgba(255,255,255,0.1);background:transparent;color:#475569;cursor:pointer;transition:all 0.2s;white-space:nowrap}
-.sw-btn:first-child{border-radius:8px 0 0 8px}
-.sw-btn:last-child{border-radius:0 8px 8px 0}
-.sw-btn.active{background:rgba(56,189,248,0.1);color:#38bdf8;border-color:#38bdf8}
-.sw-hint{text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:#334155;padding-bottom:0.25rem}
+  [data-theme="light"] {
+    --bg: #F7F5F0;
+    --bg2: #ffffff;
+    --ink: #111110;
+    --muted: #6B6B66;
+    --line: #E2DED6;
+    --accent: #C8501A;
+    --accent-light: #F5E9E3;
+    --tag-bg: #EDEAE4;
+    --tag-ink: #444441;
+    --nav-bg: rgba(247,245,240,0.95);
+    --contact-bg: #111110;
+    --contact-text: #ffffff;
+    --contact-sub: #8B8B85;
+    --contact-link: #D0CFC8;
+    --contact-icon-bg: #222220;
+  }
 
-/* ══ GLOBAL NAV ══ */
-.g-nav{display:flex;align-items:center;justify-content:space-between;padding:0.875rem 2rem;border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(10,14,26,0.96);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100}
-.g-logo{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;color:#38bdf8;text-decoration:none;letter-spacing:0.06em}
-.g-links{display:flex;gap:1.5rem;list-style:none}
-.g-links button{font-size:12px;color:#64748b;background:none;border:none;cursor:pointer;font-family:'JetBrains Mono',monospace;transition:color 0.2s}
-.g-links button:hover,.g-links button.active{color:#38bdf8}
-.g-right{display:flex;align-items:center;gap:10px}
-.g-cv{font-family:'JetBrains Mono',monospace;font-size:11px;padding:5px 13px;border:1px solid #38bdf8;border-radius:100px;background:transparent;color:#38bdf8;text-decoration:none;transition:all 0.2s}
-.g-cv:hover{background:#38bdf8;color:#0a0e1a}
-.g-gh{display:inline-flex;align-items:center;gap:5px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#64748b;text-decoration:none;transition:color 0.2s}
-.g-gh:hover{color:#e2e8f0}
-.g-gh svg{width:14px;height:14px}
-.g-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:blink 2s infinite}
-.g-status{display:flex;align-items:center;gap:5px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#475569}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+  [data-theme="dark"] {
+    --bg: #0D1117;
+    --bg2: #161B22;
+    --ink: #E6EDF3;
+    --muted: #8B949E;
+    --line: #30363D;
+    --accent: #58A6FF;
+    --accent-light: rgba(88,166,255,0.1);
+    --tag-bg: #1C2128;
+    --tag-ink: #C9D1D9;
+    --nav-bg: rgba(13,17,23,0.95);
+    --contact-bg: #161B22;
+    --contact-text: #E6EDF3;
+    --contact-sub: #8B949E;
+    --contact-link: #8B949E;
+    --contact-icon-bg: #0D1117;
+  }
 
-/* ══════════════ CLASSIC MODE ══════════════ */
-#classic{display:none}
-.cl-hero{padding:4rem 2rem 3rem;max-width:740px;margin:0 auto}
-.cl-badge{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#38bdf8;background:rgba(56,189,248,0.08);border-radius:100px;padding:4px 12px;margin-bottom:1.25rem}
-.cl-bdot{width:6px;height:6px;border-radius:50%;background:#38bdf8;animation:blink 2s infinite}
-.cl-hero h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:700;line-height:1.05;letter-spacing:-0.03em;color:#f1f5f9;margin-bottom:0.75rem}
-.cl-hero h1 em{font-style:normal;color:#38bdf8}
-.cl-hero-sub{font-size:15px;color:#64748b;max-width:460px;line-height:1.75;margin-bottom:2rem}
-.cl-scroll{font-size:11px;color:#334155;display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace}
-.cl-scroll::before{content:'';display:block;width:24px;height:1px;background:#334155}
-.cl-div{border:none;border-top:1px solid rgba(255,255,255,0.06);margin:0 2rem}
-.cl-sec{max-width:740px;margin:0 auto;padding:3.5rem 2rem}
-.cl-sec-hd{display:flex;align-items:baseline;gap:1rem;margin-bottom:2.5rem}
-.cl-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.14em;color:#38bdf8;text-transform:uppercase}
-.cl-title{font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:700;letter-spacing:-0.02em;color:#f1f5f9}
-.cl-skill-wrap{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(255,255,255,0.06);border-radius:12px;overflow:hidden}
-.cl-sk{padding:1.25rem;border-right:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02)}
-.cl-sk:nth-child(2n){border-right:none}
-.cl-sk:nth-child(5),.cl-sk:nth-child(6){border-bottom:none}
-.cl-sk-name{font-size:13px;font-weight:500;color:#e2e8f0;margin-bottom:6px}
-.cl-tags{display:flex;flex-wrap:wrap;gap:4px}
-.cl-tag{font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 7px;border-radius:4px;background:rgba(56,189,248,0.07);color:#38bdf8;border:1px solid rgba(56,189,248,0.12)}
-.cl-tag-cloud{display:flex;flex-wrap:wrap;gap:6px;margin-top:1.5rem}
-.cl-gtag{font-size:11px;padding:4px 11px;border-radius:100px;background:rgba(255,255,255,0.04);color:#64748b;border:1px solid rgba(255,255,255,0.07)}
-.cl-exp-item{display:grid;grid-template-columns:140px 1fr;gap:1.5rem;padding:2rem 0;border-bottom:1px solid rgba(255,255,255,0.06)}
-.cl-exp-item:first-child{border-top:1px solid rgba(255,255,255,0.06)}
-.cl-period{font-family:'JetBrains Mono',monospace;font-size:10px;color:#475569;margin-bottom:4px}
-.cl-org{font-family:'JetBrains Mono',monospace;font-size:10px;color:#38bdf8;font-weight:700;letter-spacing:0.06em;text-transform:uppercase}
-.cl-role{font-size:14px;font-weight:600;color:#f1f5f9;margin-bottom:8px;line-height:1.25}
-.cl-desc{font-size:13px;color:#64748b;line-height:1.65;margin-bottom:8px}
-.cl-etag{font-size:10px;padding:2px 8px;border-radius:100px;background:rgba(255,255,255,0.04);color:#64748b}
-.cl-proj{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.cl-pc{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.25rem;text-decoration:none;display:block;transition:border-color 0.2s,transform 0.15s}
-.cl-pc:hover{border-color:rgba(56,189,248,0.35);transform:translateY(-2px)}
-.cl-pc-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:#475569;margin-bottom:6px}
-.cl-pc-name{font-size:14px;font-weight:600;color:#f1f5f9;margin-bottom:5px}
-.cl-pc-desc{font-size:12px;color:#64748b;line-height:1.6;margin-bottom:10px}
-.cl-pc-gh{font-family:'JetBrains Mono',monospace;font-size:10px;color:#38bdf8}
-.cl-edu-item{display:grid;grid-template-columns:140px 1fr;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,0.06)}
-.cl-edu-item:first-child{border-top:1px solid rgba(255,255,255,0.06)}
-.cl-edu-school{font-size:13px;font-weight:600;color:#f1f5f9;margin-bottom:2px}
-.cl-edu-deg{font-size:11px;color:#38bdf8;margin-bottom:3px}
-.cl-edu-courses{font-size:11px;color:#475569}
-.cl-contact-block{background:rgba(56,189,248,0.04);border:1px solid rgba(56,189,248,0.1);border-radius:14px;padding:2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem}
-.cl-contact-block h2{font-size:1.5rem;font-weight:700;color:#f1f5f9;letter-spacing:-0.02em;margin-bottom:4px}
-.cl-contact-block p{font-size:13px;color:#475569}
-.cl-clinks{display:flex;flex-direction:column;gap:8px}
-.cl-clink{display:flex;align-items:center;gap:10px;font-size:12px;color:#94a3b8;text-decoration:none;transition:color 0.2s}
-.cl-clink:hover{color:#f1f5f9}
-.cl-cico{width:28px;height:28px;border-radius:6px;background:rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center;font-size:13px;color:#38bdf8;flex-shrink:0}
+  html { scroll-behavior: smooth; }
 
-/* ══════════════ INFRA MODE ══════════════ */
-#infra{display:none}
-.if-hero{padding:2rem 2rem 0.5rem;text-align:center}
-.if-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:#38bdf8;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:0.4rem}
-.if-hero h1{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:700;color:#f1f5f9;letter-spacing:-0.03em;margin-bottom:0.3rem}
-.if-hero h1 span{color:#38bdf8}
-.if-sub{font-size:13px;color:#64748b;max-width:400px;margin:0 auto 0.75rem;line-height:1.7}
-.net-wrap{max-width:680px;margin:0 auto 0.25rem;cursor:default}
-#net-canvas{width:100%;display:block}
-.if-hint{text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:#334155;margin-bottom:1.25rem}
-.if-hint span{color:#38bdf8}
-.if-panels{max-width:680px;margin:0 auto;padding:0 1.5rem 2.5rem}
-.if-panel{display:none;animation:fadeUp 0.25s ease}
-.if-panel.active{display:block}
-@keyframes fadeUp{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
-.if-ph{display:flex;align-items:center;gap:10px;padding:0.875rem 1.25rem;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px 10px 0 0;margin-bottom:1px}
-.if-ph-title{font-weight:600;font-size:13px;color:#f1f5f9}
-.if-ph-addr{font-family:'JetBrains Mono',monospace;font-size:9px;color:#38bdf8;margin-left:auto}
-.if-pb{background:rgba(255,255,255,0.01);border:1px solid rgba(255,255,255,0.07);border-top:none;border-radius:0 0 10px 10px;padding:1.25rem}
-.if-default{text-align:center;padding:1.25rem 0;font-family:'JetBrains Mono',monospace;font-size:11px;color:#334155}
-.if-default span{color:#38bdf8}
-.if-sk-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-.if-sk{background:rgba(56,189,248,0.03);border:1px solid rgba(56,189,248,0.09);border-radius:7px;padding:0.75rem}
-.if-sk-n{font-size:12px;font-weight:500;color:#e2e8f0;margin-bottom:5px}
-.if-sk-tags{display:flex;flex-wrap:wrap;gap:3px}
-.if-stag{font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 5px;border-radius:3px;background:rgba(56,189,248,0.07);color:#38bdf8;border:1px solid rgba(56,189,248,0.1)}
-.if-exp{padding:0.875rem 0;border-bottom:1px solid rgba(255,255,255,0.05)}
-.if-exp:last-child{border-bottom:none;padding-bottom:0}
-.if-exp-role{font-weight:600;font-size:13px;color:#f1f5f9;margin-bottom:2px}
-.if-exp-meta{display:flex;align-items:baseline;gap:8px;margin-bottom:5px}
-.if-exp-org{font-family:'JetBrains Mono',monospace;font-size:9px;color:#38bdf8}
-.if-exp-per{font-family:'JetBrains Mono',monospace;font-size:9px;color:#334155;margin-left:auto}
-.if-exp-desc{font-size:12px;color:#64748b;line-height:1.6;margin-bottom:6px;margin-top:4px}
-.if-etags{display:flex;flex-wrap:wrap;gap:3px}
-.if-etag{font-size:9px;padding:2px 6px;border-radius:100px;background:rgba(255,255,255,0.04);color:#64748b}
-.if-proj-g{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.if-pc{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:1rem;text-decoration:none;display:block;transition:border-color 0.2s,transform 0.15s}
-.if-pc:hover{border-color:rgba(56,189,248,0.35);transform:translateY(-2px)}
-.if-pc-lang{font-family:'JetBrains Mono',monospace;font-size:9px;color:#334155;margin-bottom:5px;display:flex;align-items:center;gap:3px}
-.if-pc-name{font-size:13px;font-weight:600;color:#e2e8f0;margin-bottom:4px}
-.if-pc-desc{font-size:11px;color:#475569;line-height:1.6;margin-bottom:8px}
-.if-pc-gh{font-family:'JetBrains Mono',monospace;font-size:9px;color:#38bdf8}
-.if-edu{padding:0.875rem 0;border-bottom:1px solid rgba(255,255,255,0.05)}
-.if-edu:last-child{border-bottom:none}
-.if-edu-school{font-size:13px;font-weight:600;color:#f1f5f9;margin-bottom:2px}
-.if-edu-deg{font-size:11px;color:#38bdf8;margin-bottom:3px}
-.if-edu-courses{font-size:11px;color:#475569}
-.if-edu-per{font-family:'JetBrains Mono',monospace;font-size:9px;color:#334155;margin-bottom:4px}
-.if-cr{display:flex;align-items:center;gap:8px;padding:0.625rem 0.875rem;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:7px;text-decoration:none;transition:border-color 0.2s;margin-bottom:6px;color:inherit}
-.if-cr:last-child{margin-bottom:0}
-.if-cr:hover{border-color:rgba(56,189,248,0.25)}
-.if-cv{font-size:12px;color:#e2e8f0}
-.if-ct{font-family:'JetBrains Mono',monospace;font-size:9px;color:#334155;margin-left:auto}
-.ldot{width:7px;height:7px;border-radius:50%;display:inline-block}
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+  }
 
-/* ══════════════ TERMINAL MODE ══════════════ */
-#terminal{display:none}
-.t-wrap{max-width:680px;margin:1.25rem auto 2rem;padding:0 1.5rem}
-.t-win{background:#0d1117;border:1px solid rgba(255,255,255,0.09);border-radius:12px;overflow:hidden}
-.t-bar{display:flex;align-items:center;gap:7px;padding:9px 14px;background:#161b22;border-bottom:1px solid rgba(255,255,255,0.06)}
-.t-dot{width:10px;height:10px;border-radius:50%}
-.t-bar-title{font-family:'JetBrains Mono',monospace;font-size:10px;color:#334155;margin:0 auto}
-.t-body{padding:1.25rem 1.5rem;min-height:400px;max-height:480px;overflow-y:auto;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8}
-.t-body::-webkit-scrollbar{width:3px}
-.t-body::-webkit-scrollbar-thumb{background:#1e293b;border-radius:2px}
-.tl{margin-bottom:1px}
-.tp{color:#38bdf8}.tc{color:#f1f5f9}.to{color:#94a3b8}
-.tg{color:#22c55e}.ta{color:#fbbf24}.tpu{color:#a78bfa}
-.tcy{color:#38bdf8}.td{color:#334155}.tb{font-weight:500}
-.t-in-row{display:flex;align-items:center;border-top:1px solid rgba(255,255,255,0.06);padding:9px 1.5rem;background:#0d1117}
-.t-pf{font-family:'JetBrains Mono',monospace;font-size:12px;color:#38bdf8;flex-shrink:0;white-space:nowrap}
-#tinput{flex:1;background:transparent;border:none;outline:none;font-family:'JetBrains Mono',monospace;font-size:12px;color:#f1f5f9;caret-color:#38bdf8;padding:0 6px}
-.t-cmds{display:flex;flex-wrap:wrap;gap:5px;padding:9px 1.5rem;border-top:1px solid rgba(255,255,255,0.04);background:#0d1117}
-.tcb{font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid rgba(56,189,248,0.18);border-radius:4px;background:rgba(56,189,248,0.04);color:#38bdf8;cursor:pointer;transition:all 0.15s}
-.tcb:hover{background:rgba(56,189,248,0.1);border-color:rgba(56,189,248,0.35)}
+  /* NAV */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2.5rem;
+    border-bottom: 1px solid var(--line);
+    background: var(--nav-bg);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .nav-logo { font-weight: 700; font-size: 15px; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-right { display: flex; align-items: center; gap: 14px; }
 
-/* ══ FOOTER ══ */
-footer{text-align:center;padding:1.25rem;font-family:'JetBrains Mono',monospace;font-size:10px;color:#1e293b;border-top:1px solid rgba(255,255,255,0.04)}
+  .theme-toggle {
+    width: 40px; height: 22px;
+    border-radius: 100px;
+    border: 1.5px solid var(--line);
+    background: var(--tag-bg);
+    cursor: pointer;
+    position: relative;
+    transition: background 0.3s, border-color 0.3s;
+    flex-shrink: 0;
+  }
+  .theme-toggle::after {
+    content: '';
+    position: absolute;
+    top: 3px; left: 3px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    transition: transform 0.3s;
+  }
+  [data-theme="dark"] .theme-toggle::after { transform: translateX(18px); }
 
-/* ══ RESPONSIVE ══ */
-@media(max-width:600px){
-  .g-links{display:none}
-  .g-nav{padding:0.875rem 1.25rem}
-  .cl-skill-wrap,.cl-proj,.if-sk-grid,.if-proj-g{grid-template-columns:1fr}
-  .cl-sk:nth-child(2n){border-right:1px solid rgba(255,255,255,0.06)}
-  .cl-sk:last-child{border-bottom:none}
-  .cl-exp-item,.cl-edu-item{grid-template-columns:1fr;gap:0.5rem}
-  .cl-contact-block{flex-direction:column}
-  .cl-sec,.if-panels,.t-wrap{padding-left:1.25rem;padding-right:1.25rem}
-  .cl-hero{padding:2.5rem 1.25rem 2rem}
-  .cl-div{margin:0 1.25rem}
-  .cl-sk:nth-child(5){border-bottom:1px solid rgba(255,255,255,0.06)}
-}
+  .nav-gh {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500;
+    color: var(--muted); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-gh:hover { color: var(--ink); }
+  .nav-cv {
+    font-size: 13px; font-weight: 600;
+    padding: 8px 16px;
+    border: 1px solid var(--accent);
+    border-radius: 100px;
+    background: transparent;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-cv:hover { background: var(--accent); color: var(--bg); }
+  .nav-cta {
+    font-size: 13px; font-weight: 500;
+    padding: 8px 18px;
+    border: 1px solid var(--ink);
+    border-radius: 100px;
+    background: transparent;
+    color: var(--ink);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-cta:hover { background: var(--ink); color: var(--bg); }
+
+  /* HERO */
+  .hero {
+    padding: 6rem 2.5rem 5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: end;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-light);
+    border-radius: 100px; padding: 4px 12px; margin-bottom: 1.5rem;
+  }
+  .badge-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+    animation: blink 2s ease-in-out infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 700;
+    line-height: 1.05; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 1.25rem;
+  }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero-sub { font-size: 16px; color: var(--muted); max-width: 480px; line-height: 1.75; margin-bottom: 2.5rem; }
+  .scroll-hint { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+  .scroll-hint::before { content: ''; display: block; width: 24px; height: 1px; background: var(--muted); }
+  .hero-meta { text-align: right; }
+  .hero-meta p { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .hero-meta span { font-size: 32px; font-weight: 700; color: var(--ink); display: block; line-height: 1; letter-spacing: -0.03em; }
+
+  /* LAYOUT */
+  .divider { border: none; border-top: 1px solid var(--line); margin: 0 2.5rem; transition: border-color 0.3s; }
+  .section { max-width: 900px; margin: 0 auto; padding: 5rem 2.5rem; }
+  .section-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 3.5rem; }
+  .section-num { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; }
+  .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
+
+  /* SKILLS */
+  .skills-wrap {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .skill-block {
+    padding: 2rem;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--bg2);
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .skill-block:nth-child(2n) { border-right: none; }
+  .skill-block:nth-child(5), .skill-block:nth-child(6) { border-bottom: none; }
+  .skill-num { font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+  .skill-name { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 0.5rem; }
+  .skill-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2.5rem; }
+  .tag { font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 100px; background: var(--tag-bg); color: var(--tag-ink); transition: background 0.3s, color 0.3s; }
+
+  /* EXPERIENCE */
+  .exp-item {
+    display: grid; grid-template-columns: 160px 1fr; gap: 2rem;
+    padding: 2.5rem 0; border-bottom: 1px solid var(--line); transition: border-color 0.3s;
+  }
+  .exp-item:first-child { border-top: 1px solid var(--line); }
+  .exp-period { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+  .exp-org { font-size: 12px; font-weight: 700; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; }
+  .exp-role { font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 1rem; line-height: 1.25; letter-spacing: -0.01em; }
+  .exp-desc { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .exp-tag { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 100px; background: var(--tag-bg); color: var(--tag-ink); transition: background 0.3s, color 0.3s; }
+
+  /* PROJECTS */
+  .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .proj-card {
+    background: var(--bg2); border: 1px solid var(--line); border-radius: 16px; padding: 2rem;
+    transition: border-color 0.2s, transform 0.2s, background 0.3s;
+  }
+  .proj-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .proj-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+  .proj-name { font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 0.75rem; line-height: 1.2; }
+  .proj-desc { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 1.25rem; }
+  .proj-lang { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 500; color: var(--muted); }
+  .lang-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .proj-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 1.25rem; }
+  .proj-github {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 500; color: var(--accent);
+    text-decoration: none; border: 1px solid var(--accent);
+    border-radius: 100px; padding: 5px 12px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .proj-github:hover { background: var(--accent); color: var(--bg); }
+
+  /* EDUCATION */
+  .edu-item {
+    display: grid; grid-template-columns: 160px 1fr; gap: 2rem;
+    padding: 2rem 0; border-bottom: 1px solid var(--line); transition: border-color 0.3s;
+  }
+  .edu-item:first-child { border-top: 1px solid var(--line); }
+  .edu-year { font-size: 12px; color: var(--muted); padding-top: 3px; line-height: 1.6; }
+  .edu-school { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+  .edu-degree { font-size: 13px; color: var(--accent); font-weight: 500; margin-bottom: 4px; }
+  .edu-courses { font-size: 12px; color: var(--muted); }
+
+  /* CONTACT */
+  .contact-block {
+    background: var(--contact-bg); border: 1px solid var(--line); border-radius: 20px; padding: 3.5rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .contact-block h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--contact-text); margin-bottom: 0.5rem; line-height: 1.15; letter-spacing: -0.02em; }
+  .contact-block p { font-size: 14px; color: var(--contact-sub); }
+  .contact-links { display: flex; flex-direction: column; gap: 10px; }
+  .contact-link { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--contact-link); text-decoration: none; transition: color 0.2s; }
+  .contact-link:hover { color: var(--contact-text); }
+  .contact-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--contact-icon-bg); display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--accent); flex-shrink: 0; transition: background 0.3s; }
+
+  footer { text-align: center; padding: 2rem; font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); transition: border-color 0.3s; }
+
+  @media (max-width: 640px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-meta { text-align: left; }
+    .skills-wrap { grid-template-columns: 1fr; }
+    .skill-block:nth-child(2n) { border-right: 1px solid var(--line); }
+    .skill-block:last-child { border-bottom: none; }
+    .skill-block:nth-child(5) { border-bottom: 1px solid var(--line); }
+    .exp-item, .edu-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .proj-grid { grid-template-columns: 1fr; }
+    .contact-block { flex-direction: column; }
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    .section { padding: 3rem 1.25rem; }
+    .hero { padding: 3rem 1.25rem; }
+  }
 </style>
 </head>
-<body>
+<body data-theme="light">
 
-<!-- SWITCHER -->
-<div class="switcher">
-  <button class="sw-btn active" id="sw-cl" onclick="setMode('classic')">✦ CLASSIQUE</button>
-  <button class="sw-btn" id="sw-if" onclick="setMode('infra')">⬡ INFRA</button>
-  <button class="sw-btn" id="sw-tr" onclick="setMode('terminal')">$ TERMINAL</button>
-</div>
-<p class="sw-hint">choisissez votre interface</p>
+<nav>
+  <a class="nav-logo" href="#">FZB</a>
+  <ul class="nav-links">
+    <li><a href="#competences">Compétences</a></li>
+    <li><a href="#experience">Expérience</a></li>
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#formation">Formation</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Basculer thème clair/sombre"></button>
+    <a class="nav-gh" href="https://github.com/Fatima-Zahra7" target="_blank" aria-label="GitHub">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+      GitHub
+    </a>
+    <a class="nav-cv" href="Fatima-Zahra_BEKRAOUI_CV.pdf" download>CV ↓</a>
+    <a class="nav-cta" href="mailto:fzbekraoui@gmail.com">Me contacter</a>
+  </div>
+</nav>
 
-<!-- ══════════════════════ CLASSIC ══════════════════════ -->
-<div id="classic">
-  <nav class="g-nav">
-    <a class="g-logo" href="#">FZB</a>
-    <ul class="g-links">
-      <li><button>skills</button></li>
-      <li><button>exp</button></li>
-      <li><button>projects</button></li>
-      <li><button>edu</button></li>
-      <li><button>contact</button></li>
-    </ul>
-    <div class="g-right">
-      <a class="g-gh" href="https://github.com/Fatima-Zahra7" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-        GitHub
-      </a>
-      <a class="g-cv" href="Fatima-Zahra_BEKRAOUI_CV.pdf" download>CV ↓</a>
-      <div class="g-status"><span class="g-dot"></span>disponible</div>
-    </div>
-  </nav>
-
-  <div class="cl-hero">
-    <div class="cl-badge"><span class="cl-bdot"></span>Disponible — Août 2025</div>
+<div class="hero">
+  <div>
+    <div class="hero-badge"><span class="badge-dot"></span> Disponible — Août 2025</div>
     <h1>Bonjour, je suis<br><em>Fatima-Zahra</em></h1>
-    <p class="cl-hero-sub">Ingénieure systèmes, réseaux &amp; cybersécurité, diplômée de l'ESILV. 3 ans à sécuriser des infrastructures critiques au Ministère des Armées.</p>
-    <p class="cl-scroll">Scroll pour découvrir</p>
+    <p class="hero-sub">Ingénieure systèmes, réseaux &amp; cybersécurité, diplômée de l'ESILV. J'ai passé 3 ans à sécuriser des infrastructures critiques au Ministère des Armées — entre hardening, automatisation Ansible et conformité ANSSI.</p>
+    <p class="scroll-hint">Scroll pour découvrir</p>
   </div>
-
-  <hr class="cl-div">
-  <div class="cl-sec">
-    <div class="cl-sec-hd"><span class="cl-num">01 — Skills</span><h2 class="cl-title">Ce que je maîtrise</h2></div>
-    <div class="cl-skill-wrap">
-      <div class="cl-sk"><p class="cl-sk-name">Ingénierie Système</p><div class="cl-tags"><span class="cl-tag">Linux RedHat</span><span class="cl-tag">Debian</span><span class="cl-tag">Win Server</span><span class="cl-tag">AD</span><span class="cl-tag">DNS</span><span class="cl-tag">GPO</span></div></div>
-      <div class="cl-sk"><p class="cl-sk-name">Cybersécurité &amp; Durcissement</p><div class="cl-tags"><span class="cl-tag">Hardening</span><span class="cl-tag">ANSSI</span><span class="cl-tag">Certificats</span><span class="cl-tag">Vulnérabilités</span></div></div>
-      <div class="cl-sk"><p class="cl-sk-name">Réseaux Sécurisés</p><div class="cl-tags"><span class="cl-tag">VPN</span><span class="cl-tag">Routage</span><span class="cl-tag">Segmentation</span><span class="cl-tag">Filtrage</span></div></div>
-      <div class="cl-sk"><p class="cl-sk-name">Automatisation &amp; MCO</p><div class="cl-tags"><span class="cl-tag">Ansible</span><span class="cl-tag">Python</span><span class="cl-tag">Bash</span><span class="cl-tag">PowerShell</span><span class="cl-tag">Zabbix</span></div></div>
-      <div class="cl-sk"><p class="cl-sk-name">Gouvernance SSI</p><div class="cl-tags"><span class="cl-tag">DIRISI</span><span class="cl-tag">DAFT</span><span class="cl-tag">Audit</span><span class="cl-tag">Conformité</span></div></div>
-      <div class="cl-sk"><p class="cl-sk-name">Cryptographie</p><div class="cl-tags"><span class="cl-tag">Diffie-Hellman</span><span class="cl-tag">ElGamal</span><span class="cl-tag">Chiffrement</span></div></div>
-    </div>
-    <div class="cl-tag-cloud">
-      <span class="cl-gtag">Python</span><span class="cl-gtag">Bash</span><span class="cl-gtag">PowerShell</span><span class="cl-gtag">Ansible</span><span class="cl-gtag">Linux</span><span class="cl-gtag">Windows Server</span><span class="cl-gtag">Zabbix</span><span class="cl-gtag">Kotlin</span><span class="cl-gtag">Git</span><span class="cl-gtag">Active Directory</span><span class="cl-gtag">ANSSI</span>
-    </div>
+  <div class="hero-meta">
+    <p>Années d'expérience</p>
+    <span>3</span>
   </div>
+</div>
 
-  <hr class="cl-div">
-  <div class="cl-sec">
-    <div class="cl-sec-hd"><span class="cl-num">02 — Expérience</span><h2 class="cl-title">Mon parcours</h2></div>
-    <div class="cl-exp-item">
-      <div><p class="cl-period">11/2022 → 07/2025</p><p class="cl-org">Ministère des Armées</p></div>
+<hr class="divider">
+
+<div class="section" id="competences">
+  <div class="section-header">
+    <span class="section-num">01 — Skills</span>
+    <h2 class="section-title">Ce que je maîtrise</h2>
+  </div>
+  <div class="skills-wrap">
+    <div class="skill-block"><p class="skill-num">01</p><p class="skill-name">Ingénierie Système</p><p class="skill-desc">Linux RedHat/Debian, Windows Server, Active Directory, DNS, GPO — administration avancée d'environnements hybrides.</p></div>
+    <div class="skill-block"><p class="skill-num">02</p><p class="skill-name">Cybersécurité & Durcissement</p><p class="skill-desc">Hardening OS, gestion des certificats, authentification centralisée, remédiation de vulnérabilités.</p></div>
+    <div class="skill-block"><p class="skill-num">03</p><p class="skill-name">Réseaux Sécurisés</p><p class="skill-desc">VPN, routage, segmentation de flux, filtrage — configuration en environnement haute sécurité.</p></div>
+    <div class="skill-block"><p class="skill-num">04</p><p class="skill-name">Automatisation & MCO</p><p class="skill-desc">Ansible, Python, PowerShell, Bash — industrialisation et supervision Zabbix.</p></div>
+    <div class="skill-block"><p class="skill-num">05</p><p class="skill-name">Gouvernance SSI</p><p class="skill-desc">Homologation ANSSI/DIRISI, pilotage conformité, audit sécurité, rédaction DAFT.</p></div>
+    <div class="skill-block"><p class="skill-num">06</p><p class="skill-name">Cryptographie</p><p class="skill-desc">Diffie-Hellman, ElGamal, implémentation d'algorithmes de chiffrement appliqués.</p></div>
+  </div>
+  <div class="tag-cloud">
+    <span class="tag">Python</span><span class="tag">Bash</span><span class="tag">PowerShell</span><span class="tag">Ansible</span><span class="tag">Linux</span><span class="tag">Windows Server</span><span class="tag">Zabbix</span><span class="tag">Kotlin</span><span class="tag">Git</span><span class="tag">Active Directory</span><span class="tag">ANSSI</span>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section" id="experience">
+  <div class="section-header">
+    <span class="section-num">02 — Expérience</span>
+    <h2 class="section-title">Mon parcours</h2>
+  </div>
+  <div>
+    <div class="exp-item">
+      <div><p class="exp-period">Nov. 2022 → Juil. 2025</p><p class="exp-org">Ministère des Armées</p></div>
       <div>
-        <p class="cl-role">Ingénieure Systèmes, Réseaux &amp; Sécurité</p>
-        <p class="cl-desc">Conception et déploiement d'infrastructures critiques Unix/Windows en environnement haute sécurité. Pilotage de la conformité SSI selon les normes ANSSI/DIRISI. Scripts PowerShell/Bash pour durcissement automatisé des pare-feux. Rédaction des DAFT et procédures d'exploitation sécurisée.</p>
-        <div class="cl-tags"><span class="cl-etag">Ansible</span><span class="cl-etag">Linux</span><span class="cl-etag">ANSSI</span><span class="cl-etag">Hardening</span><span class="cl-etag">DAFT</span></div>
+        <p class="exp-role">Ingénieure Systèmes, Réseaux &amp; Sécurité</p>
+        <p class="exp-desc">Conception et déploiement d'infrastructures critiques Unix/Windows en environnement haute sécurité. Pilotage de la conformité SSI selon les normes ANSSI/DIRISI. Scripts PowerShell/Bash pour le durcissement automatisé des pare-feux. Rédaction des DAFT et procédures d'exploitation sécurisée.</p>
+        <div class="exp-tags"><span class="exp-tag">Ansible</span><span class="exp-tag">Linux</span><span class="exp-tag">ANSSI</span><span class="exp-tag">Hardening</span><span class="exp-tag">DAFT</span><span class="exp-tag">Saclay</span></div>
       </div>
     </div>
-    <div class="cl-exp-item">
-      <div><p class="cl-period">11/2021 → 08/2022</p><p class="cl-org">Préfecture de Police</p></div>
+    <div class="exp-item">
+      <div><p class="exp-period">Nov. 2021 → Août 2022</p><p class="exp-org">Préfecture de Police</p></div>
       <div>
-        <p class="cl-role">Technicienne Support Informatique</p>
-        <p class="cl-desc">Administration des accès et gestion du cycle de vie des identités via Active Directory. Support de niveau 2/3 sur des serveurs critiques.</p>
-        <div class="cl-tags"><span class="cl-etag">Active Directory</span><span class="cl-etag">MCO</span><span class="cl-etag">Support N2/N3</span></div>
+        <p class="exp-role">Technicienne Support Informatique</p>
+        <p class="exp-desc">Administration des accès et gestion du cycle de vie des identités via Active Directory. Support de niveau 2/3 sur des serveurs critiques.</p>
+        <div class="exp-tags"><span class="exp-tag">Active Directory</span><span class="exp-tag">MCO</span><span class="exp-tag">Support N2/N3</span><span class="exp-tag">Paris</span></div>
       </div>
     </div>
   </div>
-
-  <hr class="cl-div">
-  <div class="cl-sec">
-    <div class="cl-sec-hd"><span class="cl-num">03 — Projets</span><h2 class="cl-title">Réalisations</h2></div>
-    <div class="cl-proj">
-      <a class="cl-pc" href="https://github.com/Fatima-Zahra7/Cryptography_Diffie-Hellman_ElGamal" target="_blank">
-        <p class="cl-pc-label">Cryptographie · Python</p>
-        <p class="cl-pc-name">Diffie-Hellman &amp; ElGamal</p>
-        <p class="cl-pc-desc">Chiffrement asymétrique avec génération de clés, échange sécurisé et opérations cryptographiques complètes.</p>
-        <span class="cl-pc-gh">github.com ↗</span>
-      </a>
-      <a class="cl-pc" href="https://github.com/Fatima-Zahra7/FitQuest" target="_blank">
-        <p class="cl-pc-label">Application Mobile · Kotlin</p>
-        <p class="cl-pc-name">FitQuest</p>
-        <p class="cl-pc-desc">App Android IA pour générer des programmes d'entraînement personnalisés avec suivi des performances.</p>
-        <span class="cl-pc-gh">github.com ↗</span>
-      </a>
-    </div>
-  </div>
-
-  <hr class="cl-div">
-  <div class="cl-sec">
-    <div class="cl-sec-hd"><span class="cl-num">04 — Formation</span><h2 class="cl-title">Études</h2></div>
-    <div class="cl-edu-item">
-      <p class="cl-period">09/2022 → 08/2025<br>Courbevoie</p>
-      <div><p class="cl-edu-school">ESILV — École Supérieure d'Ingénieurs Léonard-de-Vinci</p><p class="cl-edu-deg">Diplôme d'ingénieur · Cloud Computing &amp; Cybersécurité</p><p class="cl-edu-courses">Infrastructure avancée · Réseau · Cryptographie · Forensic · ML &amp; Data Science</p></div>
-    </div>
-    <div class="cl-edu-item">
-      <p class="cl-period">09/2024 → 01/2025<br>Riga, Lettonie</p>
-      <div><p class="cl-edu-school">RTU — Technical University of Riga</p><p class="cl-edu-deg">Semestre international · 6 mois</p><p class="cl-edu-courses">Cryptography &amp; Data Security · Network Security · Reliability of Information Systems</p></div>
-    </div>
-  </div>
-
-  <div class="cl-sec" style="padding-top:0">
-    <div class="cl-contact-block">
-      <div><h2>Travaillons<br>ensemble.</h2><p>Disponible août 2025 — Île-de-France</p></div>
-      <div class="cl-clinks">
-        <a class="cl-clink" href="mailto:fzbekraoui@gmail.com"><span class="cl-cico">✉</span>fzbekraoui@gmail.com</a>
-        <a class="cl-clink" href="tel:+33627552673"><span class="cl-cico">☏</span>06 27 55 26 73</a>
-        <a class="cl-clink" href="https://github.com/Fatima-Zahra7" target="_blank"><span class="cl-cico">⌥</span>github.com/Fatima-Zahra7</a>
-        <span class="cl-clink"><span class="cl-cico">⌖</span>Gennevilliers, 92230</span>
-      </div>
-    </div>
-  </div>
-  <footer>fzbekraoui.me · Fatima-Zahra Bekraoui · 2025</footer>
 </div>
 
-<!-- ══════════════════════ INFRA ══════════════════════ -->
-<div id="infra">
-  <nav class="g-nav">
-    <a class="g-logo" href="#">FZB // NETWORK</a>
-    <ul class="g-links">
-      <li><button onclick="showPanel('skills')" id="ib-skills">skills</button></li>
-      <li><button onclick="showPanel('exp')" id="ib-exp">exp</button></li>
-      <li><button onclick="showPanel('proj')" id="ib-proj">projects</button></li>
-      <li><button onclick="showPanel('edu')" id="ib-edu">edu</button></li>
-      <li><button onclick="showPanel('contact')" id="ib-contact">contact</button></li>
-    </ul>
-    <div class="g-right">
-      <a class="g-gh" href="https://github.com/Fatima-Zahra7" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-        GitHub
-      </a>
-      <a class="g-cv" href="Fatima-Zahra_BEKRAOUI_CV.pdf" download>CV ↓</a>
-      <div class="g-status"><span class="g-dot"></span>node online</div>
-    </div>
-  </nav>
+<hr class="divider">
 
-  <div class="if-hero">
-    <p class="if-label">// infrastructure personnelle</p>
-    <h1>Fatima-Zahra <span>BEKRAOUI</span></h1>
-    <p class="if-sub">Ingénieure systèmes, réseaux &amp; cybersécurité — cliquez sur un nœud pour explorer l'infrastructure.</p>
+<div class="section" id="projets">
+  <div class="section-header">
+    <span class="section-num">03 — Projets</span>
+    <h2 class="section-title">Réalisations</h2>
   </div>
-  <div class="net-wrap"><canvas id="net-canvas" height="300"></canvas></div>
-  <p class="if-hint">↑ cliquez sur un nœud — <span>5 services actifs</span></p>
-
-  <div class="if-panels">
-    <div class="if-panel active" id="panel-default"><div class="if-default"><p>$ <span>ping fzbekraoui.me</span> — sélectionnez un nœud pour accéder au service</p></div></div>
-
-    <div class="if-panel" id="panel-skills">
-      <div class="if-ph"><span>⚙</span><span class="if-ph-title">Skills</span><span class="if-ph-addr">192.168.1.10 // CORE</span></div>
-      <div class="if-pb">
-        <div class="if-sk-grid">
-          <div class="if-sk"><p class="if-sk-n">Ingénierie Système</p><div class="if-sk-tags"><span class="if-stag">Linux RedHat</span><span class="if-stag">Debian</span><span class="if-stag">Win Server</span><span class="if-stag">AD</span><span class="if-stag">DNS</span></div></div>
-          <div class="if-sk"><p class="if-sk-n">Cybersécurité</p><div class="if-sk-tags"><span class="if-stag">Hardening</span><span class="if-stag">ANSSI</span><span class="if-stag">Certificats</span></div></div>
-          <div class="if-sk"><p class="if-sk-n">Réseaux</p><div class="if-sk-tags"><span class="if-stag">VPN</span><span class="if-stag">Routage</span><span class="if-stag">Filtrage</span></div></div>
-          <div class="if-sk"><p class="if-sk-n">Automatisation</p><div class="if-sk-tags"><span class="if-stag">Ansible</span><span class="if-stag">Python</span><span class="if-stag">Bash</span><span class="if-stag">PowerShell</span></div></div>
-          <div class="if-sk"><p class="if-sk-n">Gouvernance SSI</p><div class="if-sk-tags"><span class="if-stag">DIRISI</span><span class="if-stag">DAFT</span><span class="if-stag">Audit</span></div></div>
-          <div class="if-sk"><p class="if-sk-n">Cryptographie</p><div class="if-sk-tags"><span class="if-stag">Diffie-Hellman</span><span class="if-stag">ElGamal</span></div></div>
-        </div>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <p class="proj-label">Cryptographie</p>
+      <p class="proj-name">Diffie-Hellman &amp; ElGamal</p>
+      <p class="proj-desc">Implémentation d'algorithmes de chiffrement avec génération de clés, échange sécurisé et opérations cryptographiques complètes.</p>
+      <div class="proj-footer">
+        <span class="proj-lang"><span class="lang-dot" style="background:#3572A5"></span> Python</span>
+        <a class="proj-github" href="https://github.com/Fatima-Zahra7/Cryptography_Diffie-Hellman_ElGamal" target="_blank">Voir sur GitHub ↗</a>
       </div>
     </div>
-
-    <div class="if-panel" id="panel-exp">
-      <div class="if-ph"><span>🏛</span><span class="if-ph-title">Expériences</span><span class="if-ph-addr">192.168.1.20 // EXP</span></div>
-      <div class="if-pb">
-        <div class="if-exp">
-          <div class="if-exp-meta"><span class="if-exp-role">Ingénieure Systèmes, Réseaux &amp; Sécurité</span><span class="if-exp-per">2022→2025</span></div>
-          <p class="if-exp-org">MINISTÈRE DES ARMÉES · Saclay</p>
-          <p class="if-exp-desc">Infrastructures critiques Unix/Windows haute sécurité. Homologation SSI ANSSI/DIRISI. Scripts PowerShell/Bash pour durcissement automatisé. Rédaction DAFT.</p>
-          <div class="if-etags"><span class="if-etag">Ansible</span><span class="if-etag">Linux</span><span class="if-etag">ANSSI</span><span class="if-etag">Hardening</span><span class="if-etag">DAFT</span></div>
-        </div>
-        <div class="if-exp">
-          <div class="if-exp-meta"><span class="if-exp-role">Technicienne Support Informatique</span><span class="if-exp-per">2021→2022</span></div>
-          <p class="if-exp-org">PRÉFECTURE DE POLICE DE PARIS</p>
-          <p class="if-exp-desc">Administration des accès via Active Directory. MCO niveau 2/3 sur serveurs critiques.</p>
-          <div class="if-etags"><span class="if-etag">Active Directory</span><span class="if-etag">MCO</span><span class="if-etag">N2/N3</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="if-panel" id="panel-proj">
-      <div class="if-ph"><span>◈</span><span class="if-ph-title">Projets</span><span class="if-ph-addr">192.168.1.30 // REPO</span></div>
-      <div class="if-pb">
-        <div class="if-proj-g">
-          <a class="if-pc" href="https://github.com/Fatima-Zahra7/Cryptography_Diffie-Hellman_ElGamal" target="_blank">
-            <p class="if-pc-lang"><span class="ldot" style="background:#3572A5"></span>Python</p>
-            <p class="if-pc-name">Diffie-Hellman &amp; ElGamal</p>
-            <p class="if-pc-desc">Chiffrement asymétrique avec génération de clés et échange sécurisé.</p>
-            <span class="if-pc-gh">github.com ↗</span>
-          </a>
-          <a class="if-pc" href="https://github.com/Fatima-Zahra7/FitQuest" target="_blank">
-            <p class="if-pc-lang"><span class="ldot" style="background:#A97BFF"></span>Kotlin</p>
-            <p class="if-pc-name">FitQuest</p>
-            <p class="if-pc-desc">App Android IA pour programmes d'entraînement personnalisés.</p>
-            <span class="if-pc-gh">github.com ↗</span>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="if-panel" id="panel-edu">
-      <div class="if-ph"><span>◉</span><span class="if-ph-title">Formation</span><span class="if-ph-addr">192.168.1.40 // EDU</span></div>
-      <div class="if-pb">
-        <div class="if-edu"><p class="if-edu-per">09/2022 → 08/2025 · Courbevoie</p><p class="if-edu-school">ESILV — Léonard-de-Vinci</p><p class="if-edu-deg">Diplôme d'ingénieur · Cloud Computing &amp; Cybersécurité</p><p class="if-edu-courses">Infrastructure avancée · Réseau · Cryptographie · Forensic · ML &amp; Data Science</p></div>
-        <div class="if-edu"><p class="if-edu-per">09/2024 → 01/2025 · Riga, Lettonie</p><p class="if-edu-school">RTU — Technical University of Riga</p><p class="if-edu-deg">Semestre international · 6 mois</p><p class="if-edu-courses">Cryptography &amp; Data Security · Network Security · Reliability of Information Systems</p></div>
-      </div>
-    </div>
-
-    <div class="if-panel" id="panel-contact">
-      <div class="if-ph"><span>⊕</span><span class="if-ph-title">Contact</span><span class="if-ph-addr">192.168.1.50 // CONTACT</span></div>
-      <div class="if-pb">
-        <a class="if-cr" href="mailto:fzbekraoui@gmail.com"><span>✉</span><span class="if-cv">fzbekraoui@gmail.com</span><span class="if-ct">SMTP</span></a>
-        <a class="if-cr" href="tel:+33627552673"><span>☏</span><span class="if-cv">06 27 55 26 73</span><span class="if-ct">TEL</span></a>
-        <a class="if-cr" href="https://github.com/Fatima-Zahra7" target="_blank"><span>⌥</span><span class="if-cv">github.com/Fatima-Zahra7</span><span class="if-ct">GIT</span></a>
-        <div class="if-cr"><span>⌖</span><span class="if-cv">Gennevilliers, 92230</span><span class="if-ct">LOC</span></div>
+    <div class="proj-card">
+      <p class="proj-label">Application Mobile</p>
+      <p class="proj-name">FitQuest</p>
+      <p class="proj-desc">Application Android utilisant l'IA pour générer un programme d'entraînement personnalisé, avec suivi des performances et historique.</p>
+      <div class="proj-footer">
+        <span class="proj-lang"><span class="lang-dot" style="background:#A97BFF"></span> Kotlin</span>
+        <a class="proj-github" href="https://github.com/Fatima-Zahra7/FitQuest" target="_blank">Voir sur GitHub ↗</a>
       </div>
     </div>
   </div>
-  <footer>fzbekraoui.me · Fatima-Zahra Bekraoui · 2025</footer>
 </div>
 
-<!-- ══════════════════════ TERMINAL ══════════════════════ -->
-<div id="terminal">
-  <nav class="g-nav">
-    <a class="g-logo" href="#">FZB // TERMINAL</a>
-    <div class="g-right">
-      <a class="g-gh" href="https://github.com/Fatima-Zahra7" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-        GitHub
-      </a>
-      <a class="g-cv" href="Fatima-Zahra_BEKRAOUI_CV.pdf" download>CV ↓</a>
-      <div class="g-status"><span class="g-dot"></span>node online</div>
+<hr class="divider">
+
+<div class="section" id="formation">
+  <div class="section-header">
+    <span class="section-num">04 — Formation</span>
+    <h2 class="section-title">Études</h2>
+  </div>
+  <div>
+    <div class="edu-item">
+      <div class="edu-year">Sept. 2022 → Août 2025<br>Courbevoie</div>
+      <div>
+        <p class="edu-school">ESILV — École Supérieure d'Ingénieurs Léonard-de-Vinci</p>
+        <p class="edu-degree">Diplôme d'ingénieur · Cloud Computing &amp; Cybersécurité</p>
+        <p class="edu-courses">Infrastructure avancée · Réseau · Cryptographie · Forensic · Machine Learning &amp; Data Science</p>
+      </div>
     </div>
-  </nav>
-  <div class="t-wrap">
-    <div class="t-win">
-      <div class="t-bar">
-        <div class="t-dot" style="background:#ff5f57"></div>
-        <div class="t-dot" style="background:#febc2e"></div>
-        <div class="t-dot" style="background:#28c840"></div>
-        <span class="t-bar-title">fzbekraoui@portfolio ~ zsh</span>
-      </div>
-      <div class="t-body" id="tbody"></div>
-      <div class="t-in-row">
-        <span class="t-pf">fzbekraoui@portfolio:~$&nbsp;</span>
-        <input type="text" id="tinput" placeholder="tapez une commande..." autocomplete="off" spellcheck="false">
-      </div>
-      <div class="t-cmds">
-        <button class="tcb" onclick="rc('whoami')">whoami</button>
-        <button class="tcb" onclick="rc('ls skills/')">ls skills/</button>
-        <button class="tcb" onclick="rc('cat experience.log')">cat experience.log</button>
-        <button class="tcb" onclick="rc('ls projects/')">ls projects/</button>
-        <button class="tcb" onclick="rc('cat education.txt')">cat education.txt</button>
-        <button class="tcb" onclick="rc('contact --all')">contact --all</button>
-        <button class="tcb" onclick="rc('help')">help</button>
-        <button class="tcb" onclick="rc('clear')">clear</button>
+    <div class="edu-item">
+      <div class="edu-year">Sept. 2024 → Jan. 2025<br>Riga, Lettonie</div>
+      <div>
+        <p class="edu-school">RTU — Technical University of Riga</p>
+        <p class="edu-degree">Semestre international · 6 mois</p>
+        <p class="edu-courses">Cryptography &amp; Data Security · Network Security · Reliability of Information Systems</p>
       </div>
     </div>
   </div>
-  <footer>fzbekraoui.me · Fatima-Zahra Bekraoui · 2025</footer>
 </div>
+
+<div class="section" style="padding-top:0">
+  <div class="contact-block">
+    <div>
+      <h2>Travaillons<br>ensemble.</h2>
+      <p>Disponible à partir d'août 2025 — Île-de-France</p>
+    </div>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:fzbekraoui@gmail.com"><span class="contact-icon">✉</span> fzbekraoui@gmail.com</a>
+      <a class="contact-link" href="tel:+33627552673"><span class="contact-icon">☏</span> 06 27 55 26 73</a>
+      <span class="contact-link"><span class="contact-icon">⌖</span> Gennevilliers, 92230</span>
+    </div>
+  </div>
+</div>
+
+<footer>Fatima-Zahra Bekraoui · Ingénieure Systèmes &amp; Cybersécurité · 2025</footer>
 
 <script>
-// ══ MODE SWITCHER ══
-let termBooted = false;
-function setMode(m) {
-  ['classic','infra','terminal'].forEach(id => document.getElementById(id).style.display = 'none');
-  document.getElementById(m).style.display = 'block';
-  ['cl','if','tr'].forEach(id => document.getElementById('sw-'+id).classList.remove('active'));
-  const map = {classic:'cl', infra:'if', terminal:'tr'};
-  document.getElementById('sw-'+map[m]).classList.add('active');
-  localStorage.setItem('pf-mode4', m);
-  if (m === 'terminal' && !termBooted) bootTerm();
-  if (m === 'infra') setTimeout(resizeCV, 50);
-}
-const saved = localStorage.getItem('pf-mode4') || 'classic';
-setMode(saved);
-
-// ══ NETWORK ══
-const nodes = [
-  {id:'skills',  label:'SKILLS',   sub:'core.sys', x:.5,  y:.15, color:'#38bdf8', r:25},
-  {id:'exp',     label:'EXP',      sub:'hist.log', x:.18, y:.55, color:'#a78bfa', r:21},
-  {id:'proj',    label:'PROJECTS', sub:'repo.git', x:.82, y:.55, color:'#34d399', r:21},
-  {id:'edu',     label:'EDU',      sub:'cert.db',  x:.28, y:.87, color:'#fb923c', r:19},
-  {id:'contact', label:'CONTACT',  sub:'net.io',   x:.72, y:.87, color:'#f472b6', r:19},
-];
-const edges = [['skills','exp'],['skills','proj'],['skills','edu'],['skills','contact'],['exp','edu'],['proj','contact']];
-let activeNode = null;
-const cv = document.getElementById('net-canvas');
-const cx = cv.getContext('2d');
-let particles = [];
-
-function initP() {
-  particles = [];
-  edges.forEach(([a,b]) => {
-    particles.push({from:a, to:b, t:Math.random(), speed:0.004+Math.random()*0.003, dir:Math.random()>.5?1:-1});
+  const toggle = document.getElementById('themeToggle');
+  const body = document.body;
+  const saved = localStorage.getItem('theme') || 'light';
+  body.dataset.theme = saved;
+  toggle.addEventListener('click', () => {
+    const next = body.dataset.theme === 'light' ? 'dark' : 'light';
+    body.dataset.theme = next;
+    localStorage.setItem('theme', next);
   });
-}
-initP();
-
-function gxy(n) { return [n.x * cv.width, n.y * cv.height]; }
-
-function drawNet() {
-  const w = cv.width, h = cv.height;
-  cx.clearRect(0, 0, w, h);
-  cx.fillStyle = 'rgba(56,189,248,0.04)';
-  for (let x=20;x<w;x+=36) for (let y=14;y<h;y+=36) { cx.beginPath(); cx.arc(x,y,1,0,Math.PI*2); cx.fill(); }
-
-  edges.forEach(([a,b]) => {
-    const na=nodes.find(n=>n.id===a), nb=nodes.find(n=>n.id===b);
-    const [x1,y1]=gxy(na), [x2,y2]=gxy(nb);
-    const hot = activeNode && (activeNode.id===a || activeNode.id===b);
-    cx.beginPath(); cx.moveTo(x1,y1); cx.lineTo(x2,y2);
-    cx.strokeStyle = hot ? 'rgba(56,189,248,0.28)' : 'rgba(255,255,255,0.05)';
-    cx.lineWidth = hot ? 1 : 0.5;
-    cx.setLineDash(hot ? [] : [4,6]); cx.stroke(); cx.setLineDash([]);
-  });
-
-  particles.forEach(p => {
-    const na=nodes.find(n=>n.id===p.from), nb=nodes.find(n=>n.id===p.to);
-    const [x1,y1]=gxy(na), [x2,y2]=gxy(nb);
-    const px=x1+(x2-x1)*p.t, py=y1+(y2-y1)*p.t;
-    cx.beginPath(); cx.arc(px,py,1.5,0,Math.PI*2);
-    cx.fillStyle = (p.dir>0?na:nb).color; cx.globalAlpha=0.4; cx.fill(); cx.globalAlpha=1;
-    p.t += p.speed * p.dir;
-    if (p.t>1){p.t=1;p.dir=-1;} if (p.t<0){p.t=0;p.dir=1;}
-  });
-
-  nodes.forEach(node => {
-    const [x,y]=gxy(node), r=node.r, hot=activeNode&&activeNode.id===node.id;
-    if (hot) { cx.beginPath(); cx.arc(x,y,r+9,0,Math.PI*2); cx.fillStyle=node.color+'18'; cx.fill(); }
-    cx.beginPath(); cx.arc(x,y,r+4,0,Math.PI*2);
-    cx.strokeStyle=hot?node.color:node.color+'25'; cx.lineWidth=1;
-    cx.setLineDash([3,4]); cx.stroke(); cx.setLineDash([]);
-    cx.beginPath(); cx.arc(x,y,r,0,Math.PI*2);
-    cx.fillStyle=hot?node.color+'14':'rgba(10,14,26,0.9)'; cx.fill();
-    cx.strokeStyle=hot?node.color:node.color+'50'; cx.lineWidth=hot?1.5:0.5; cx.stroke();
-    cx.fillStyle=hot?node.color:'#64748b';
-    cx.font=`500 ${r>21?9:8}px 'JetBrains Mono'`; cx.textAlign='center';
-    cx.fillText(node.label, x, y+1);
-    cx.fillStyle=hot?node.color+'88':'#33415570'; cx.font=`7px 'JetBrains Mono'`;
-    cx.fillText(node.sub, x, y+10);
-  });
-}
-
-function resizeCV() { cv.width=cv.offsetWidth; cv.height=300; }
-resizeCV(); window.addEventListener('resize', resizeCV);
-
-cv.addEventListener('click', e => {
-  const r=cv.getBoundingClientRect();
-  const mx=(e.clientX-r.left)*(cv.width/r.width), my=(e.clientY-r.top)*(cv.height/r.height);
-  for (const n of nodes) { const[nx,ny]=gxy(n); if(Math.hypot(mx-nx,my-ny)<n.r+8){showPanel(n.id);return;} }
-});
-cv.addEventListener('mousemove', e => {
-  const r=cv.getBoundingClientRect();
-  const mx=(e.clientX-r.left)*(cv.width/r.width), my=(e.clientY-r.top)*(cv.height/r.height);
-  let hit=false; for(const n of nodes){const[nx,ny]=gxy(n);if(Math.hypot(mx-nx,my-ny)<n.r+8){hit=true;break;}}
-  cv.style.cursor = hit ? 'pointer' : 'default';
-});
-
-function showPanel(id) {
-  document.querySelectorAll('.if-panel').forEach(p=>p.classList.remove('active'));
-  document.getElementById('panel-'+id).classList.add('active');
-  document.querySelectorAll('.g-links button').forEach(b=>b.classList.remove('active'));
-  const b=document.getElementById('ib-'+id); if(b) b.classList.add('active');
-  activeNode = nodes.find(n=>n.id===id) || null;
-}
-
-function loop() { drawNet(); requestAnimationFrame(loop); }
-loop();
-
-// ══ TERMINAL ══
-const tbody = document.getElementById('tbody');
-const tinput = document.getElementById('tinput');
-
-function ln(html) {
-  const d=document.createElement('div'); d.className='tl'; d.innerHTML=html;
-  tbody.appendChild(d); tbody.scrollTop=tbody.scrollHeight;
-}
-
-const cmds = {
-  'whoami': () => {
-    ln(`<span class='tg tb'>Fatima-Zahra BEKRAOUI</span>`);
-    ln(`<span class='to'>Ingénieure Systèmes, Réseaux & Cybersécurité</span>`);
-    ln(`<span class='to'>ESILV · Diplômée 2025 · Disponible août 2025</span>`);
-    ln(`<span class='to'>Localisation : Gennevilliers, 92230</span>`);
-  },
-  'ls skills/': () => {
-    ln(`<span class='tcy'>total 6 modules</span>`);
-    ln(`<span class='ta'>drwxr--</span>  <span class='tg'>ingenierie-systeme/</span>    <span class='td'>linux redhat debian windows-server ad dns gpo</span>`);
-    ln(`<span class='ta'>drwxr--</span>  <span class='tg'>cybersecurite/</span>         <span class='td'>hardening anssi certificats vulnerabilites</span>`);
-    ln(`<span class='ta'>drwxr--</span>  <span class='tg'>reseaux-securises/</span>     <span class='td'>vpn routage segmentation filtrage</span>`);
-    ln(`<span class='ta'>drwxr--</span>  <span class='tg'>automatisation/</span>        <span class='td'>ansible python bash powershell zabbix</span>`);
-    ln(`<span class='ta'>drwxr--</span>  <span class='tg'>gouvernance-ssi/</span>       <span class='td'>anssi dirisi daft audit conformite</span>`);
-    ln(`<span class='ta'>drwxr--</span>  <span class='tg'>cryptographie/</span>         <span class='td'>diffie-hellman elgamal chiffrement</span>`);
-  },
-  'cat experience.log': () => {
-    ln(`<span class='td'>──────────────────────────────────────</span>`);
-    ln(`<span class='tcy'>[2022-11 → 2025-07]</span> <span class='tg tb'>MINISTÈRE DES ARMÉES</span> <span class='td'>· Saclay</span>`);
-    ln(`<span class='to'>Ingénieure Systèmes, Réseaux & Sécurité</span>`);
-    ln(`<span class='td'>  › Déploiement infrastructures critiques Unix/Windows haute sécurité</span>`);
-    ln(`<span class='td'>  › Homologation SSI selon normes ANSSI/DIRISI</span>`);
-    ln(`<span class='td'>  › Scripts PowerShell/Bash pour durcissement automatisé</span>`);
-    ln(`<span class='td'>  › Rédaction DAFT et procédures d'exploitation sécurisée</span>`);
-    ln(`<span class='td'>──────────────────────────────────────</span>`);
-    ln(`<span class='tcy'>[2021-11 → 2022-08]</span> <span class='tpu tb'>PRÉFECTURE DE POLICE</span> <span class='td'>· Paris</span>`);
-    ln(`<span class='to'>Technicienne Support Informatique</span>`);
-    ln(`<span class='td'>  › Administration identités via Active Directory</span>`);
-    ln(`<span class='td'>  › MCO niveau 2/3 sur serveurs critiques</span>`);
-  },
-  'ls projects/': () => {
-    ln(`<span class='tcy'>total 2 repositories</span>`);
-    ln(`<span class='ta'>-rwxr--</span>  <span class='tg'>Cryptography_Diffie-Hellman_ElGamal/</span>  <span class='tcy'>Python</span>`);
-    ln(`<span class='td'>           github.com/Fatima-Zahra7/Cryptography_Diffie-Hellman_ElGamal</span>`);
-    ln(`<span class='ta'>-rwxr--</span>  <span class='tg'>FitQuest/</span>                              <span class='tpu'>Kotlin</span>`);
-    ln(`<span class='td'>           github.com/Fatima-Zahra7/FitQuest</span>`);
-  },
-  'cat education.txt': () => {
-    ln(`<span class='tcy tb'>ESILV</span> — École Supérieure d'Ingénieurs Léonard-de-Vinci`);
-    ln(`<span class='to'>Diplôme ingénieur · Cloud Computing & Cybersécurité</span>`);
-    ln(`<span class='td'>09/2022 → 08/2025 · Courbevoie</span>`);
-    ln(`<span class='td'>Infra avancée · Réseau · Cryptographie · Forensic · ML & Data Science</span>`);
-    ln(``);
-    ln(`<span class='tcy tb'>RTU</span> — Technical University of Riga`);
-    ln(`<span class='to'>Semestre international · 6 mois</span>`);
-    ln(`<span class='td'>09/2024 → 01/2025 · Riga, Lettonie</span>`);
-    ln(`<span class='td'>Cryptography & Data Security · Network Security · Reliability</span>`);
-  },
-  'contact --all': () => {
-    ln(`<span class='tg'>EMAIL   </span>  <span class='to'>fzbekraoui@gmail.com</span>`);
-    ln(`<span class='tg'>TEL     </span>  <span class='to'>06 27 55 26 73</span>`);
-    ln(`<span class='tg'>GITHUB  </span>  <span class='to'>github.com/Fatima-Zahra7</span>`);
-    ln(`<span class='tg'>WEB     </span>  <span class='to'>fzbekraoui.me</span>`);
-    ln(`<span class='tg'>LOC     </span>  <span class='to'>Gennevilliers, 92230</span>`);
-  },
-  'help': () => {
-    ln(`<span class='tcy'>commandes disponibles :</span>`);
-    ln(`  <span class='tg'>whoami</span>              — identité & profil`);
-    ln(`  <span class='tg'>ls skills/</span>          — liste des compétences`);
-    ln(`  <span class='tg'>cat experience.log</span>  — parcours professionnel`);
-    ln(`  <span class='tg'>ls projects/</span>        — projets GitHub`);
-    ln(`  <span class='tg'>cat education.txt</span>   — formations`);
-    ln(`  <span class='tg'>contact --all</span>       — coordonnées`);
-    ln(`  <span class='tg'>clear</span>               — vider le terminal`);
-  },
-  'clear': () => { tbody.innerHTML = ''; }
-};
-
-function rc(cmd) {
-  const c = cmd.trim(); if (!c) return;
-  if (c !== 'clear') ln(`<span class='tp'>fzbekraoui@portfolio:~$</span> <span class='tc'>${c}</span>`);
-  if (cmds[c]) cmds[c]();
-  else ln(`<span class='td'>commande introuvable: ${c} — tapez <span class='tg'>help</span></span>`);
-  if (c !== 'clear') ln(``);
-  tbody.scrollTop = tbody.scrollHeight;
-}
-
-function bootTerm() {
-  termBooted = true;
-  const boot = [
-    `<span class='td'>╔════════════════════════════════════════╗</span>`,
-    `<span class='td'>║</span>  <span class='tcy tb'>FZB PORTFOLIO v4.0</span>  <span class='td'>· fzbekraoui.me   ║</span>`,
-    `<span class='td'>╚════════════════════════════════════════╝</span>`,
-    ``,
-    `<span class='tg'>✓</span> <span class='to'>Connexion établie · node@fzbekraoui.me</span>`,
-    `<span class='tg'>✓</span> <span class='to'>Session ouverte · 2025</span>`,
-    `<span class='tg'>✓</span> <span class='to'>3 ans d'expérience chargés</span>`,
-    ``,
-    `<span class='to'>Tapez <span class='tg'>help</span> pour voir les commandes disponibles.</span>`,
-    ``
-  ];
-  let i = 0;
-  const t = setInterval(() => { if (i < boot.length) { ln(boot[i]); i++; } else clearInterval(t); }, 65);
-}
-
-tinput.addEventListener('keydown', e => {
-  if (e.key === 'Enter') { rc(tinput.value); tinput.value = ''; }
-});
 </script>
+
 </body>
 </html>
